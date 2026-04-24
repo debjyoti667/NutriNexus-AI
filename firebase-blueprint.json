@@ -1,0 +1,68 @@
+{
+  "entities": {
+    "UserProfile": {
+      "title": "User Profile",
+      "description": "Information about the user's health goals and preferences",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string" },
+        "displayName": { "type": "string" },
+        "email": { "type": "string" },
+        "healthGoals": { "type": "array", "items": { "type": "string" } },
+        "preferences": { "type": "array", "items": { "type": "string" } },
+        "budgetLimit": { "type": "number" },
+        "onboardingComplete": { "type": "boolean" },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["uid", "email"]
+    },
+    "MealLog": {
+      "title": "Meal Log",
+      "description": "A record of food consumed by the user",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string" },
+        "foodName": { "type": "string" },
+        "nutrition": {
+          "type": "object",
+          "properties": {
+            "calories": { "type": "number" },
+            "protein": { "type": "number" },
+            "carbs": { "type": "number" },
+            "fats": { "type": "number" }
+          }
+        },
+        "healthScore": { "type": "number" },
+        "imageUrl": { "type": "string" },
+        "timestamp": { "type": "string", "format": "date-time" }
+      }
+    },
+    "HabitMetric": {
+      "title": "Habit Metric",
+      "description": "Daily metrics for habit tracking",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string" },
+        "date": { "type": "string" },
+        "skippedBreakfast": { "type": "boolean" },
+        "lateNightSnack": { "type": "boolean" },
+        "processedFoodCount": { "type": "number" },
+        "wellnessScore": { "type": "number" }
+      }
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": "UserProfile",
+      "description": "User profiles and settings"
+    },
+    "/meals/{mealId}": {
+      "schema": "MealLog",
+      "description": "Food logs for all users"
+    },
+    "/habits/{habitId}": {
+      "schema": "HabitMetric",
+      "description": "Daily habit metrics"
+    }
+  }
+}

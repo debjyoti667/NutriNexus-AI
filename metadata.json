@@ -1,0 +1,12 @@
+{
+  "name": "NutriNexus AI",
+  "description": "Smart nutrition platform that uses AI to personalize meal choices, analyze food via images, and nudge users toward healthier habits.",
+  "requestFramePermissions": [
+    "camera"
+  ],
+  "majorCapabilities": [
+    "AI Food Analysis",
+    "Smart Meal Recommendations",
+    "Habit Tracking"
+  ]
+}
